@@ -1,36 +1,136 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-const vscode = require('vscode');
-
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+const { exampleComment } = require("./utils/statics");
+const vscode = require("vscode");
 
 /**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
+	const jsCodeLensProvider = vscode.languages.registerCodeLensProvider(
+		"javascript",
+		{
+			provideCodeLenses(document, __token) {
+				return getCodeLens(document);
+			},
+		}
+	);
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "nocomments" is now active!');
+	const tsCodeLensProvider = vscode.languages.registerCodeLensProvider(
+		"typescript",
+		{
+			provideCodeLenses(document, __token) {
+				return getCodeLens(document);
+			},
+		}
+	);
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('nocomments.helloWorld', function () {
-		// The code you place here will be executed every time your command is executed
+	const generateComment = vscode.commands.registerCommand(
+		"noComments.generateComment",
+		function (uri, startLine, endLine, startChar, endChar) {
+			vscode.workspace.openTextDocument(uri).then((doc) => {
+				const functionContent = doc.getText(
+					new vscode.Range(startLine, startChar, endLine, endChar)
+				);
+				// Now you can use functionContent to generate comments or do whatever you need
+				const editor = vscode.window.activeTextEditor;
+				if (editor) {
+					const position = new vscode.Position(startLine, 0);
+					editor.edit((editBuilder) => {
+						editBuilder.insert(position, `${functionContent}\n`);
+					});
+				}
+			});
+		}
+	);
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from noComments!');
-	});
+	const inputApiKey = vscode.commands.registerCommand('noComments.inputApiKey', async () => {
+        const apiKey = await vscode.window.showInputBox({
+            placeHolder: 'Enter your OpenAI API key',
+            prompt: 'API Key must be a valid OpenAI key - See Docs on how to get one!',
+            validateInput: (input) => {
+                if (!input) {
+                    return 'API key cannot be empty';
+                }
+                return // No error
+            }
+        });
 
-	context.subscriptions.push(disposable);
+		vscode.window.showInformationMessage(apiKey);
+
+        if (apiKey) {
+            // Save the API key to the workspace configuration
+            const config = vscode.workspace.getConfiguration('noComments');
+            await config.update('apiKey', apiKey, vscode.ConfigurationTarget.Global);
+            vscode.window.showInformationMessage('API Key saved successfully!');
+        }
+    });
+
+	context.subscriptions.push(
+		jsCodeLensProvider,
+		tsCodeLensProvider,
+		generateComment
+	);
 }
 
 // This method is called when your extension is deactivated
 function deactivate() {}
 
+// This function creates a CodeLens for each function in the document
+function getCodeLens(document) {
+	const lenses = [];
+	const regex = /function\s+(\w+)\s*\(/g; // Simple regex to find functions
+
+	let match;
+	while ((match = regex.exec(document.getText())) !== null) {
+		const functionName = match[1];
+		const startLine = document.positionAt(match.index).line;
+		const startChar = match.index;
+
+		// Find the start of the function's body
+		let bodyStart = regex.lastIndex; // Set body start after function declaration
+
+		let braceCount = 0;
+		let endLine = startLine;
+		let endChar = startChar;
+
+		// Loop through the document text to find the function body
+		for (let i = bodyStart; i < document.getText().length; i++) {
+			const char = document.getText()[i];
+
+			if (char === "{") {
+				braceCount++;
+			} else if (char === "}") {
+				braceCount--;
+				if (braceCount === 0) {
+					endLine = document.positionAt(i).line;
+					endChar = i;
+					break;
+				}
+			}
+		}
+
+		// Create CodeLens for the function
+		lenses.push(
+			new vscode.CodeLens(
+				new vscode.Range(startLine, startChar, endLine, endChar),
+				{
+					title: "Generate Comment",
+					command: "noComments.generateComment",
+					arguments: [
+						document.uri,
+						startLine,
+						endLine,
+						startChar,
+						endChar,
+					], // Pass the start and end positions
+				}
+			)
+		);
+	}
+
+	return lenses;
+}
+
 module.exports = {
 	activate,
-	deactivate
-}
+	deactivate,
+};

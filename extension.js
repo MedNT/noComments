@@ -1,4 +1,6 @@
-const { exampleComment } = require("./utils/statics");
+import { generateCommentForCode } from "./utils/service";
+
+const { exampleComment, openAIApiKey } = require("./utils/statics");
 const vscode = require("vscode");
 
 /**
@@ -30,12 +32,16 @@ function activate(context) {
 				const functionContent = doc.getText(
 					new vscode.Range(startLine, startChar, endLine, endChar)
 				);
-				// Now you can use functionContent to generate comments or do whatever you need
+				
+				// generating a comment using AI
+				const generatedComment = generateCommentForCode(functionContent, openAIApiKey);
+
+				// adding the generated code on top of the function
 				const editor = vscode.window.activeTextEditor;
 				if (editor) {
 					const position = new vscode.Position(startLine, 0);
 					editor.edit((editBuilder) => {
-						editBuilder.insert(position, `${functionContent}\n`);
+						editBuilder.insert(position, `${generatedComment}\n`);
 					});
 				}
 			});

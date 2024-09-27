@@ -17,4 +17,8 @@ const exampleComment = `/**
  */`;
 
 
-module.exports = { exampleComment }
+ const openAIApiKey = "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";
+
+const huggingFaceAPIKey = "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";
+
+module.exports = { exampleComment, openAIApiKey }

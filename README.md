@@ -10,7 +10,7 @@ Created with ❤️️ by [mntcodes.com](https://www.mntcodes.com)
 **noComments** is a Visual Studio Code extension designed to help developers effortlessly generate documentation comments for their functions and methods. With just a click, you can ensure that your code is well-documented and easier to understand, eliminating the hassle of writing comments manually.
 
 **Before** <br/>
-![Status Bar Indicators](images/before.png) <br/>
+![Status Bar Indicators](images/before.PNG) <br/>
 
 **After** <br/>
 ![Status Bar Indicators](images/after.PNG) <br/>

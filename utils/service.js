@@ -1,3 +1,4 @@
+const { modelPrompt } = require("./statics");
 const axios = require("axios");
 
 /**
@@ -17,9 +18,9 @@ async function generateCommentForCode(codeSnippet, apiKey) {
 				messages: [
 					{
 						role: "user",
-						content: `Please generate a comment for the following code using the programming language commenting principles:\n\n${codeSnippet}`,
+						content: `${modelPrompt}${codeSnippet}`,
 					},
-				]
+				],
 			},
 			{
 				headers: {
@@ -29,16 +30,16 @@ async function generateCommentForCode(codeSnippet, apiKey) {
 			}
 		);
 
-		const generatedComment = response.data.choices[0].message.content;
-		return generatedComment;
+		return {
+			comment: response.data.choices[0].message.content
+		};
+	
 	} catch (error) {
-		console.error("Error generating comment:", error);
-		return null;
+		
+		return {
+			error : error.message + ". Check following link for details. "
+		}
 	}
-}
-
-function sum(a, b) {
-    return a+b;
 }
 
 module.exports = { generateCommentForCode };

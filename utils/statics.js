@@ -16,9 +16,10 @@ const exampleComment = `/**
  * as it is already sorted by definition.
  */`;
 
+const modelPrompt =
+	"Generate a detailed comment for this function following the format of JSDoc comments, including descriptions for parameters, return value, and an explanation of what the function does: \n";
 
- const openAIApiKey = "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";
+// list of available languages (for the beta version 0.0.1)
+const languages = ["javascript", "typescript"];
 
-const huggingFaceAPIKey = "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";
-
-module.exports = { exampleComment, openAIApiKey }
+module.exports = { exampleComment, modelPrompt, languages };

@@ -15,7 +15,7 @@
 	"contributes": {
 		"commands": [
 			{
-				"title": "noComments - Config Api Key",
+				"title": "📝 noComments - Enter your Api Key",
 				"command": "noComments.inputApiKey"
 			}
 		],

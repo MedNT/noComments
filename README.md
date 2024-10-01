@@ -1,65 +1,141 @@
-# nocomments README
+# 👨‍💻 NoComments [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/MedNT/noComments) 
+Created with ❤️️ by [mntcodes.com](https://www.mntcodes.com)
 
-This is the README for your extension "nocomments". After writing up a brief description, we recommend including the following sections.
 
-## Features
+![Node.js](https://img.shields.io/badge/Node.js-CommonJS-green)
+![Version](https://img.shields.io/badge/version-0.0.1-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Marketplace](https://img.shields.io/badge/marketplace-vscode-blue?logo=visualstudio)
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## Overview
 
-For example if there is an image subfolder under your extension project workspace:
+**noComments** is a Visual Studio Code extension designed to help developers effortlessly generate documentation comments for their functions and methods. With just a click, you can ensure that your code is well-documented and easier to understand, eliminating the hassle of writing comments manually.
 
-\!\[feature X\]\(images/feature-x.png\)
+**Before** <br/>
+![Status Bar Indicators](images/before.PNG) <br/>
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+**After** <br/>
+![Status Bar Indicators](images/after.PNG) <br/>
 
-## Requirements
+## 🌟 Features
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- **Generate Comments**: Automatically generates comments for your functions based on their content.
+- **Inline Code Lens**: Adds a "Generate Comment 👨‍💻" button next to each function for quick access.
+- **Customizable API Key**: Use your own [OpenAI API key](https://platform.openai.com/settings/profile?tab=api-keys) to generate comments, keeping you in control of your usage.
 
-## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
 
-For example:
+## 🚀 Installation
 
-This extension contributes the following settings:
+1. **Install from VSCode Marketplace**:
+   - Visit the [VSCode Marketplace](https://marketplace.visualstudio.com) and search for **noComments**.
+   - Click "Install" to add the extension to your VSCode.
+   
+2. **Manual Installation**:
+   - Download the latest release from the [Releases](https://github.com/mntcodes/noComments/releases) page.
+   - Open VSCode and navigate to `Extensions > Install from VSIX` and select the downloaded `.vsix` file.
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
 
-## Known Issues
+## 💡 Usage
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+1. **Open a JavaScript or TypeScript file** in VSCode.
+2. Place your cursor on any function you want to document.
+3. Click the "Generate Comment 👨‍💻" button that appears on top of the function.
+4. The generated comment will be inserted above the function automatically.
 
-## Release Notes
+## ⚙️ Configuration
 
-Users appreciate release notes as you update your extension.
+To use the extension, you need to provide your OpenAI API key:
 
-### 1.0.0
+1. Go to **Settings** (`Ctrl + ,` or `Cmd + ,` on Mac).
+2. Type noComments and search for `📝 noComments - Enter your Api Key`.
 
-Initial release of ...
+![Status Bar Indicators](images/config-1.PNG) <br/>
 
-### 1.0.1
+3. Enter your OpenAI API key in the `API Key` field & click ENTER.
 
-Fixed issue #.
+![Status Bar Indicators](images/config-2.PNG) <br/>
 
-### 1.1.0
+![Status Bar Indicators](images/config-3.PNG) <br/>
 
-Added features X, Y, and Z.
+
+4. Congrats you [OpenAI API key](https://platform.openai.com/settings/profile?tab=api-keys) is saved successfully!
+
+![Status Bar Indicators](images/config-4.PNG) <br/>
+
+## 📃 Example
+
+### Before
+
+```javascript
+Generate Comment 👨‍💻
+function add(a, b) {
+    return a + b;
+}
+```
+
+### After clicking "Generate Comment"
+
+```javascript
+/**
+ * Adds two numbers together and returns the sum.
+ *
+ * This function takes two numerical arguments and returns their sum. 
+ * It performs a simple addition operation and can be used in various 
+ * mathematical calculations or to combine numeric values in an application.
+ *
+ * @param {number} a - The first number to add.
+ * @param {number} b - The second number to add.
+ * @returns {number} The sum of the two numbers.
+ *
+ * @example
+ * // returns 5
+ * add(2, 3);
+ *
+ * @example
+ * // returns 0
+ * add(-1, 1);
+ */
+function add(a, b) {
+    return a + b;
+}
+```
+
+## 🌱 Contribution
+
+Contributions are welcome! If you have suggestions, features, or improvements, feel free to submit an issue or pull request. 
+
+1. **Fork the repository**
+2. **Create a new branch** (`git checkout -b feature/your-feature`)
+3. **Commit your changes** (`git commit -m 'Add some feature'`)
+4. **Push to the branch** (`git push origin feature/your-feature`)
+5. **Open a pull request**
 
 ---
 
-## Working with Markdown
+## 📄 License
 
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
+This project is licensed under the MIT License - see the [LICENSE](https://opensource.org/licenses/MIT) file for details.
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
 
-## For more information
+## 🙏 Acknowledgements
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+- [OpenAI API](https://openai.com/api/) for their amazing AI Model.
+- [Visual Studio Code](https://code.visualstudio.com/) for being an amazing code editor.
 
-**Enjoy!**
+
+
+---
+
+## 💬 Contact
+
+Feel free to reach out for any questions or suggestions!  
+
+[About Me](https://mntcodes.com) <br/>
+[Twitter](https://x.com/NaciriTaoufik) <br/>
+[LinkedIn](https://www.linkedin.com/in/mednt/) <br/>
+[GitHub](https://github.com/MedNT) <br/>
+[Blog](https://mntcode.substack.com/) 
+
+
+---
+
+> **Note**: This extension is open-source and available on [GitHub](https://github.com/your-github-repo). Contributions and suggestions are greatly appreciated!

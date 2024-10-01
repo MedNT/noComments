@@ -10,7 +10,7 @@ Created with ❤️️ by [mntcodes.com](https://www.mntcodes.com)
 **noComments** is a Visual Studio Code extension designed to help developers effortlessly generate documentation comments for their functions and methods. With just a click, you can ensure that your code is well-documented and easier to understand, eliminating the hassle of writing comments manually.
 
 **Before** <br/>
-![Status Bar Indicators](images/before.PNG) <br/>
+![Status Bar Indicators](images/before.png) <br/>
 
 **After** <br/>
 ![Status Bar Indicators](images/after.PNG) <br/>
@@ -48,18 +48,18 @@ To use the extension, you need to provide your OpenAI API key:
 1. Go to **Settings** (`Ctrl + ,` or `Cmd + ,` on Mac).
 2. Type noComments and search for `📝 noComments - Enter your Api Key`.
 
-![Status Bar Indicators](images/config-1.PNG) <br/>
+![Status Bar Indicators](images/config-1.png) <br/>
 
 3. Enter your OpenAI API key in the `API Key` field & click ENTER.
 
-![Status Bar Indicators](images/config-2.PNG) <br/>
+![Status Bar Indicators](images/config-2.png) <br/>
 
-![Status Bar Indicators](images/config-3.PNG) <br/>
+![Status Bar Indicators](images/config-3.png) <br/>
 
 
 4. Congrats you [OpenAI API key](https://platform.openai.com/settings/profile?tab=api-keys) is saved successfully!
 
-![Status Bar Indicators](images/config-4.PNG) <br/>
+![Status Bar Indicators](images/config-4.png) <br/>
 
 ## 📃 Example
 

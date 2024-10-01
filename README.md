@@ -138,4 +138,4 @@ Feel free to reach out for any questions or suggestions!
 
 ---
 
-> **Note**: This extension is open-source and available on [GitHub](https://github.com/your-github-repo). Contributions and suggestions are greatly appreciated!
+> **Note**: This extension is open-source and available on [GitHub](https://github.com/MedNT/noComments). Contributions and suggestions are greatly appreciated!

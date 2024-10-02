@@ -2,7 +2,7 @@
 	"name": "nocomments",
 	"displayName": "noComments",
 	"description": "A VSCode extension that uses AI to automatically suggest or generate code comments based on the context and functionality of a function or method.",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"icon": "images/noComments.png",
 	"publisher": "NaciriTaoufikMohamed",
 	"author": "Naciri Taoufik Mohamed",

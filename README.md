@@ -98,6 +98,13 @@ function add(a, b) {
     return a + b;
 }
 ```
+---
+
+## ▶️ Demo
+
+![noComments Demo](images/nocomments.gif) <br/>
+
+---
 
 ## 🌱 Contribution
 
@@ -120,7 +127,6 @@ This project is licensed under the MIT License - see the [LICENSE](https://opens
 
 - [OpenAI API](https://openai.com/api/) for their amazing AI Model.
 - [Visual Studio Code](https://code.visualstudio.com/) for being an amazing code editor.
-
 
 
 ---
